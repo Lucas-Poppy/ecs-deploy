@@ -1,0 +1,22 @@
+version: "3"
+services:
+  front:
+    tty: true
+    build:
+      context: .
+      dockerfile: ./docker/nuxt/Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+  backend:
+    tty: true
+    build:
+      context: .
+      dockerfile: ./docker/express/Dockerfile
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - 8888:8888
